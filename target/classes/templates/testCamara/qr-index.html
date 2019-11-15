@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="QR Code scanner">
+  <meta name="keywords" content="qrcode,qr code,scanner,barcode,javascript">
+  <meta name="language" content="English">
+  <meta name="copyright" content="Lazar Laszlo (c) 2011">
+  <meta name="Revisit-After" content="1 Days">
+  <meta name="robots" content="index, follow">
+
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+<title>识别二维码</title>
+
+<style type="text/css">
+html, body{
+  width:100%;
+  text-align:center;
+  margin: 0;
+  padding: 0;
+}
+img{
+  border:0;
+}
+#main{
+  margin: 15px auto;
+  background:white;
+  overflow: auto;
+	width: 100%;
+}
+#header{
+  background:white;
+  margin-bottom:15px;
+}
+#mainbody{
+  background: white;
+  width:100%;
+	display:none;
+}
+#footer{
+  background:white;
+}
+#v{
+  width:290px;
+  height:270px;
+}
+#qr-canvas{
+  display:none;
+}
+#qrfile{
+  width:290px;
+  height:270px;
+  position: relative;
+}
+#mp1{
+  text-align:center;
+  font-size:26px;
+}
+#imghelp input{
+  position:absolute;
+  left:0;
+  top:0;
+  bottom: 0;
+  width: 100%;
+  z-index:100;
+  font:18px arial,sans-serif;
+  background:#f0f0f0;
+	padding-top:10px;
+	padding-bottom:10px;
+	border-radius:20px;
+  opacity: 0;
+}
+.selector{
+  margin:0;
+  padding:0;
+  cursor:pointer;
+  margin-bottom:-5px;
+}
+#outdiv
+{
+  width:290px;
+  height:270px;
+}
+#result{
+  border: solid;
+	border-width: 1px 1px 1px 1px;
+  border-color: #ccc;
+	width:290px;
+  height: 35px;
+  outline: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+}
+
+ul{
+  margin-bottom:0;
+  margin-right:40px;
+}
+li{
+  display:inline;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  font-weight: bold;
+  border-right: 1px solid #333333;
+}
+li a{
+  text-decoration: none;
+  color: black;
+}
+
+#footer a{
+	color: black;
+}
+.tsel{
+    padding:0;
+}
+.hide {
+  display: none;
+}
+#login {
+  background: #30c0b1;
+  color: white;
+  width: 80px;
+  height: 35px;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  margin-top: 20px;
+}
+#uploadText {
+  position:absolute;
+  left:0;
+  top:0;
+  bottom: 0;
+  width: 100%;
+  z-index:99;
+  font:18px arial,sans-serif;
+  padding-top:10px;
+  padding-bottom:10px;
+  margin: 0;
+  -webkit-appearance: none;
+}
+#out-canvas {
+  margin-top: 40px;
+  border: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: #30c0b1;
+}
+</style>
+
+<!--<script type="text/javascript" async="" src="./qr/ga.js"></script>-->
+<script type="text/javascript" src="asserts/testJS/llqrcode.js"></script>
+<!--<script type="text/javascript" src="./qr/plusone.js" gapi_processed="true"></script>-->
+<script type="text/javascript" src="asserts/testJS/webqr.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <p id="mp1">
+
+      </p>
+    </div>
+    <div id="mainbody" style="display: inline;">
+      <table class="tsel" border="0" width="100%">
+        <tbody>
+          <tr>
+            <td valign="top" align="center" width="50%">
+              <table class="tsel" border="0">
+                <tbody>
+                  <tr>
+                    <td><img class="selector hide" id="webcamimg" src="./qr/vid.png" onclick="setwebcam()" align="left" style="opacity: 1;"></td>
+                    <td>
+                      <img class="selector hide" id="qrimg" src="./qr/cam.png" onclick="setimg()" align="right" style="opacity: 0.2;">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" align="center">
+                      <div id="outdiv">
+                        <div id="qrfile"><canvas id="out-canvas" width="290" height="220"></canvas>
+                        <div id="imghelp">
+                          <p id="uploadText">点击选择二维码礼品</p>
+                          <input type="file" id="fileBtn" onchange="handleFiles(this.files)"/>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" align="center">
+              <img class="hide" src="./qr/down.png">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" align="center">
+              <div>
+                <span>
+                	扫描结果:
+                </span><input type="text"  id="result">
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<canvas id="qr-canvas" width="800" height="600" style="width: 800px; height: 600px;"></canvas>
+<script type="text/javascript">
+  load();
+  function login () {
+    var hostSn = document.getElementById('result').value;
+  };
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+body {
+    background: rgb(242, 242, 242);
+    height: 812px;
+}
+
+.tag {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    height: 150px;
+}
+
+.header-inner {
+    height: 100%;
+    background-color: #fff;
+}
+.carousel{
+    margin-top: 20px;
+}
+
+
+.controls{
+    text-align: center;
+    margin-top: 20px;
+    background-color: #fff;
+    height: 150px;
+}
+
+footer{
+    /* position: absolute;
+    bottom: 10px; */
+}
+
+.tips{
+    text-align: center;
+}
+
+.container{
+    height: 500px;
+    background-color: #fff;
+}
+
+.row{
+    margin-top: 20px;
+}
+.seat{
+    height: 20px;
+    /*background-color: green;*/
+    margin-left: 5px;
+}
+.content{
+    margin-top: 25%;
+}
